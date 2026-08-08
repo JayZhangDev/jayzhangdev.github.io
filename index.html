@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Jay Zhang · Developer</title>
+<style>
+  :root{
+    --bg:#0a0e14; --panel:#0f1621; --panel2:#131c2a; --edge:#1d2938;
+    --ink:#e8eef6; --dim:#8194aa; --faint:#5a6b80;
+    --green:#26d07c; --amber:#f5a623; --cyan:#38bdf8; --violet:#9d7bf0;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:
+      radial-gradient(1000px 500px at 15% -10%, #10203a55, transparent),
+      var(--bg);
+    color:var(--ink);
+    font-family:'SF Mono',ui-monospace,'Cascadia Code',Consolas,monospace;
+    line-height:1.6;padding:0 20px}
+  .wrap{max-width:820px;margin:0 auto;padding:60px 0}
+  .term{background:var(--panel);border:1px solid var(--edge);border-radius:12px;
+    padding:26px 28px;margin-bottom:44px}
+  .term .bar{display:flex;gap:7px;margin-bottom:18px}
+  .term .bar span{width:11px;height:11px;border-radius:50%}
+  .dot-r{background:#f2555a}.dot-y{background:#f5a623}.dot-g{background:#26d07c}
+  .line{white-space:pre-wrap}
+  .prompt{color:var(--green)}
+  .path{color:var(--cyan)}
+  .out{color:var(--dim)}
+  h1{font-size:26px;font-weight:700;letter-spacing:.01em;margin:6px 0 2px}
+  .tag{color:var(--amber);font-size:14px}
+  .cursor{display:inline-block;width:9px;height:17px;background:var(--green);
+    margin-left:3px;vertical-align:middle;animation:blink 1.1s steps(1) infinite}
+  @keyframes blink{50%{opacity:0}}
+  section{margin-bottom:40px}
+  h2{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--dim);
+    margin-bottom:18px;display:flex;align-items:center;gap:10px}
+  h2::before{content:"//";color:var(--green)}
+  p.intro{color:var(--ink);font-size:15px;margin-bottom:8px}
+  .intro .dim{color:var(--dim)}
+  .proj{background:linear-gradient(135deg,var(--panel2),var(--panel));
+    border:1px solid var(--edge);border-radius:12px;padding:22px 24px;
+    margin-bottom:16px;position:relative;overflow:hidden;transition:.18s}
+  .proj:hover{border-color:#2f4a68;transform:translateY(-2px)}
+  .proj::after{content:"";position:absolute;top:0;right:0;width:4px;height:100%;
+    background:var(--green)}
+  .proj.a::after{background:var(--amber)}
+  .proj.c::after{background:var(--cyan)}
+  .proj h3{font-size:17px;font-weight:600;margin-bottom:4px;display:flex;
+    align-items:center;gap:10px;flex-wrap:wrap}
+  .badge{font-size:10px;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--faint);border:1px solid var(--edge);border-radius:20px;
+    padding:2px 9px}
+  .proj p{color:var(--dim);font-size:13.5px;margin:8px 0 12px}
+  .stack{display:flex;flex-wrap:wrap;gap:6px}
+  .chip{font-size:11px;color:var(--cyan);background:#0c1a2a;
+    border:1px solid #17324a;border-radius:6px;padding:3px 9px}
+  .learn{color:var(--faint);font-size:12.5px;margin-top:12px;
+    border-top:1px solid var(--edge);padding-top:12px}
+  .learn b{color:var(--dim);font-weight:600}
+  .next{background:var(--panel);border:1px dashed var(--edge);border-radius:12px;
+    padding:20px 24px;color:var(--dim);font-size:13.5px}
+  .next b{color:var(--amber)}
+  footer{border-top:1px solid var(--edge);padding-top:22px;margin-top:20px;
+    color:var(--faint);font-size:12px;line-height:1.8}
+  footer a{color:var(--cyan);text-decoration:none}
+  footer a:hover{text-decoration:underline}
+  .disc{color:var(--faint);font-size:11.5px;margin-top:14px;font-style:italic}
+</style></head>
+<body><div class="wrap">
+  <div class="term">
+    <div class="bar"><span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span></div>
+    <div class="line"><span class="prompt">jay@dev</span><span class="out">:</span><span class="path">~</span><span class="out">$ </span>whoami</div>
+    <h1>Jay Zhang</h1>
+    <div class="tag">self-taught developer · algorithmic trading systems<span class="cursor"></span></div>
+  </div>
+  <section>
+    <h2>about</h2>
+    <p class="intro">17-year-old self-taught developer from the Houston area, focused on quantitative finance and algorithmic trading.</p>
+    <p class="intro dim">I build trading systems and the research tooling around them — backtesting engines, data pipelines, risk models — and I care more about not fooling myself than about pretty results. Most of what I know I learned by building things, breaking them, and figuring out why they broke.</p>
+  </section>
+  <section>
+    <h2>projects</h2>
+    <div class="proj">
+      <h3>FuturesBotSuite <span class="badge">futures · research framework</span></h3>
+      <p>A paper-trading bot for MES (Micro S&P 500) futures running an Opening Range Breakout strategy under real prop-firm risk rules, plus a full research framework I built around it: an automated data recorder, a backtesting engine with honest fills and cost modeling, a research logger, and a market-regime dashboard.</p>
+      <div class="stack"><span class="chip">Python</span><span class="chip">pandas</span><span class="chip">yfinance</span><span class="chip">SQLite</span><span class="chip">backtesting</span><span class="chip">risk modeling</span></div>
+      <div class="learn"><b>What I learned:</b> my first backtest looked great — then I found it was filling entries at prices I couldn't actually get and ignoring costs. I rebuilt the engine to fill honestly and model commission + slippage. The numbers got worse, and far more trustworthy. Also learned that 28 trades tells you nothing — sample size is everything.</div>
+    </div>
+    <div class="proj a">
+      <h3>MemeBotFinal <span class="badge">solana · live trading</span></h3>
+      <p>A Solana memecoin trading bot with automated rug-pull detection, position sizing, trailing stops, a backtester, and a GUI — built to operate in fast-moving on-chain markets while managing the constant risk of getting rugged.</p>
+      <div class="stack"><span class="chip">Python</span><span class="chip">Solana</span><span class="chip">on-chain data</span><span class="chip">GUI</span><span class="chip">risk management</span></div>
+      <div class="learn"><b>What I learned:</b> real markets punish sloppy assumptions. Backtests that look profitable can hide overfitting and subtle data leakage — separating "this has edge" from "this got lucky" is the whole game, and it's harder than writing the strategy.</div>
+    </div>
+    <div class="proj c">
+      <h3>Helius Wallet Tracker <span class="badge">solana · data intelligence</span></h3>
+      <p>A Solana wallet-intelligence tool built on the Helius API that tracks and analyzes on-chain wallet activity, with credit-optimized request batching to pull data efficiently at scale without blowing through API limits.</p>
+      <div class="stack"><span class="chip">Python</span><span class="chip">Helius API</span><span class="chip">Solana</span><span class="chip">data pipelines</span></div>
+      <div class="learn"><b>What I learned:</b> working within real API constraints — rate limits, credit costs, batching — is its own engineering problem, separate from the analysis itself.</div>
+    </div>
+  </section>
+  <section>
+    <h2>currently exploring</h2>
+    <div class="next"><b>Prediction markets.</b> Researching calibration and trading strategies for Polymarket / Kalshi — building toward a system that scores probability estimates and eventually trades on them. Prediction markets are one of the cleanest sandboxes for quantitative thinking, and I'm learning the math (probability, Kelly sizing, calibration) alongside the code.</div>
+  </section>
+  <footer>
+    <div class="line"><span class="prompt">jay@dev</span><span class="out">:</span><span class="path">~</span><span class="out">$ </span>contact</div>
+    <div style="margin-top:10px">GitHub &nbsp;→&nbsp; <a href="https://github.com/JayZhangDev">github.com/JayZhangDev</a></div>
+    <div class="disc">All projects shown here are personal, educational builds — not trading advice, not investment products, and not proven profitable. Built to learn and to demonstrate engineering, not to manage money.</div>
+  </footer>
+</div></body></html>
