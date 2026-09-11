@@ -1,111 +1,536 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Jay Zhang · Developer</title>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jay Zhang</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --bg:#0a0e14; --panel:#0f1621; --panel2:#131c2a; --edge:#1d2938;
-    --ink:#e8eef6; --dim:#8194aa; --faint:#5a6b80;
-    --green:#26d07c; --amber:#f5a623; --cyan:#38bdf8; --violet:#9d7bf0;
+  :root {
+    --hero-bg: #1a1a24;
+    --hero-ink: #ecebf3;
+    --hero-dim: #8b8a99;
+    --paper: #f4f2f7;
+    --paper-warm: #ebe8f0;
+    --ink: #232030;
+    --ink-dim: #5f5a70;
+    --accent: #8a91d1;
+    --accent-soft: #a5abe0;
+    --accent-deep: #6b73b8;
+    --edge: #dcd8e5;
   }
-  *{margin:0;padding:0;box-sizing:border-box}
-  html{scroll-behavior:smooth}
-  body{background:
-      radial-gradient(1000px 500px at 15% -10%, #10203a55, transparent),
-      var(--bg);
-    color:var(--ink);
-    font-family:'SF Mono',ui-monospace,'Cascadia Code',Consolas,monospace;
-    line-height:1.6;padding:0 20px}
-  .wrap{max-width:820px;margin:0 auto;padding:60px 0}
-  .term{background:var(--panel);border:1px solid var(--edge);border-radius:12px;
-    padding:26px 28px;margin-bottom:44px}
-  .term .bar{display:flex;gap:7px;margin-bottom:18px}
-  .term .bar span{width:11px;height:11px;border-radius:50%}
-  .dot-r{background:#f2555a}.dot-y{background:#f5a623}.dot-g{background:#26d07c}
-  .line{white-space:pre-wrap}
-  .prompt{color:var(--green)}
-  .path{color:var(--cyan)}
-  .out{color:var(--dim)}
-  h1{font-size:26px;font-weight:700;letter-spacing:.01em;margin:6px 0 2px}
-  .tag{color:var(--amber);font-size:14px}
-  .cursor{display:inline-block;width:9px;height:17px;background:var(--green);
-    margin-left:3px;vertical-align:middle;animation:blink 1.1s steps(1) infinite}
-  @keyframes blink{50%{opacity:0}}
-  section{margin-bottom:40px}
-  h2{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--dim);
-    margin-bottom:18px;display:flex;align-items:center;gap:10px}
-  h2::before{content:"//";color:var(--green)}
-  p.intro{color:var(--ink);font-size:15px;margin-bottom:8px}
-  .intro .dim{color:var(--dim)}
-  .proj{background:linear-gradient(135deg,var(--panel2),var(--panel));
-    border:1px solid var(--edge);border-radius:12px;padding:22px 24px;
-    margin-bottom:16px;position:relative;overflow:hidden;transition:.18s}
-  .proj:hover{border-color:#2f4a68;transform:translateY(-2px)}
-  .proj::after{content:"";position:absolute;top:0;right:0;width:4px;height:100%;
-    background:var(--green)}
-  .proj.a::after{background:var(--amber)}
-  .proj.c::after{background:var(--cyan)}
-  .proj h3{font-size:17px;font-weight:600;margin-bottom:4px;display:flex;
-    align-items:center;gap:10px;flex-wrap:wrap}
-  .badge{font-size:10px;letter-spacing:.1em;text-transform:uppercase;
-    color:var(--faint);border:1px solid var(--edge);border-radius:20px;
-    padding:2px 9px}
-  .proj p{color:var(--dim);font-size:13.5px;margin:8px 0 12px}
-  .stack{display:flex;flex-wrap:wrap;gap:6px}
-  .chip{font-size:11px;color:var(--cyan);background:#0c1a2a;
-    border:1px solid #17324a;border-radius:6px;padding:3px 9px}
-  .learn{color:var(--faint);font-size:12.5px;margin-top:12px;
-    border-top:1px solid var(--edge);padding-top:12px}
-  .learn b{color:var(--dim);font-weight:600}
-  .next{background:var(--panel);border:1px dashed var(--edge);border-radius:12px;
-    padding:20px 24px;color:var(--dim);font-size:13.5px}
-  .next b{color:var(--amber)}
-  footer{border-top:1px solid var(--edge);padding-top:22px;margin-top:20px;
-    color:var(--faint);font-size:12px;line-height:1.8}
-  footer a{color:var(--cyan);text-decoration:none}
-  footer a:hover{text-decoration:underline}
-  .disc{color:var(--faint);font-size:11.5px;margin-top:14px;font-style:italic}
-</style></head>
-<body><div class="wrap">
-  <div class="term">
-    <div class="bar"><span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span></div>
-    <div class="line"><span class="prompt">jay@dev</span><span class="out">:</span><span class="path">~</span><span class="out">$ </span>whoami</div>
-    <h1>Jay Zhang</h1>
-    <div class="tag">self-taught developer · algorithmic trading systems<span class="cursor"></span></div>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+  nav {
+    position: sticky; top: 0; z-index: 60;
+    background: rgba(26, 26, 36, 0.9);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    padding: 14px 32px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  nav .brand {
+    font-family: 'Caveat', cursive;
+    color: var(--accent-soft);
+    font-size: 22px; font-weight: 600;
+  }
+  nav .links a {
+    color: var(--hero-dim);
+    text-decoration: none;
+    font-size: 13px; letter-spacing: 1px;
+    margin-left: 28px; transition: color 0.15s;
+  }
+  nav .links a:hover { color: var(--accent-soft); }
+  .hero {
+    background: var(--hero-bg);
+    color: var(--hero-ink);
+    padding: 90px 32px 110px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: ''; position: absolute;
+    top: -40%; right: -10%;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(138, 145, 209, 0.18), transparent 60%);
+    pointer-events: none;
+  }
+  .hero-inner { max-width: 900px; margin: 0 auto; position: relative; }
+  .hello {
+    font-family: 'Caveat', cursive;
+    font-size: 28px;
+    color: var(--accent-soft);
+    margin-bottom: 6px;
+  }
+  .hero h1 {
+    font-family: 'Caveat', cursive;
+    font-size: 108px;
+    font-weight: 700;
+    line-height: 1;
+    color: var(--hero-ink);
+    margin-bottom: 28px;
+    letter-spacing: -2px;
+  }
+  .hero .subtitle {
+    font-family: 'Fraunces', serif;
+    font-size: 24px;
+    font-style: italic;
+    color: var(--hero-ink);
+    max-width: 640px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+  }
+  .hero .subtitle .accent { color: var(--accent-soft); font-style: normal; font-weight: 500; }
+  .hero .meta {
+    color: var(--hero-dim);
+    font-size: 15px;
+    margin-top: 32px;
+  }
+  .hero .meta .dot { color: var(--accent); margin: 0 10px; }
+
+  .wrap { max-width: 900px; margin: 0 auto; padding: 80px 32px 120px; }
+  section { margin-bottom: 80px; }
+  .section-label {
+    font-family: 'Caveat', cursive;
+    color: var(--accent);
+    font-size: 30px;
+    margin-bottom: 24px;
+    display: flex; align-items: center; gap: 14px;
+    font-weight: 600;
+  }
+  .section-label::after {
+    content: ''; flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, var(--edge), transparent);
+  }
+  p {
+    color: var(--ink);
+    font-size: 16px;
+    margin-bottom: 16px;
+    max-width: 680px;
+    font-family: 'Fraunces', serif;
+  }
+  p.dim { color: var(--ink-dim); }
+
+  .proj-list { display: flex; flex-direction: column; gap: 14px; }
+  .proj-row {
+    background: var(--paper-warm);
+    border: 1px solid var(--edge);
+    border-radius: 12px;
+    padding: 24px 28px;
+    display: flex; justify-content: space-between; align-items: center;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    gap: 20px;
+    flex-wrap: wrap;
+    text-decoration: none;
+    color: inherit;
+  }
+  .proj-row:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(138, 145, 209, 0.18);
+  }
+  .proj-row .info { flex: 1; min-width: 200px; }
+  .proj-row .info h3 {
+    font-family: 'Fraunces', serif;
+    color: var(--ink);
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 4px;
+    letter-spacing: -0.3px;
+  }
+  .proj-row .info .tag {
+    font-family: 'Caveat', cursive;
+    color: var(--accent);
+    font-size: 18px;
+  }
+  .proj-row .action {
+    color: var(--accent);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    background: transparent;
+    border: 1.5px solid var(--accent);
+    border-radius: 100px;
+    padding: 10px 20px;
+    transition: all 0.15s;
+    white-space: nowrap;
+  }
+  .proj-row:hover .action {
+    background: var(--accent); color: var(--paper);
+  }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 32px;
+  }
+  .skill-col .label {
+    font-family: 'Caveat', cursive;
+    color: var(--accent);
+    font-size: 22px;
+    margin-bottom: 8px;
+    font-weight: 600;
+  }
+  .skill-col .items {
+    font-family: 'Fraunces', serif;
+    color: var(--ink);
+    font-size: 15px;
+    line-height: 2;
+  }
+
+  .callout {
+    background: var(--paper-warm);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 12px 12px 0;
+    padding: 22px 28px;
+    max-width: 720px;
+    font-family: 'Fraunces', serif;
+  }
+  .callout .kicker {
+    font-family: 'Caveat', cursive;
+    color: var(--accent);
+    font-size: 22px;
+    margin-bottom: 8px;
+    display: block;
+  }
+  .callout p { margin-bottom: 0; }
+
+  .modal-backdrop {
+    position: fixed; inset: 0;
+    background: rgba(26, 26, 36, 0.6);
+    backdrop-filter: blur(6px);
+    display: none;
+    align-items: center; justify-content: center;
+    z-index: 100;
+    padding: 32px;
+    animation: fadeIn 0.2s ease-out;
+  }
+  .modal-backdrop.open { display: flex; }
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  .modal {
+    background: var(--paper);
+    border-radius: 16px;
+    padding: 36px 40px;
+    max-width: 720px; width: 100%;
+    max-height: 85vh; overflow-y: auto;
+    animation: slideUp 0.25s ease-out;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  }
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .modal-header {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    margin-bottom: 24px; padding-bottom: 20px;
+    border-bottom: 1px solid var(--edge);
+    gap: 16px;
+  }
+  .modal-header h2 {
+    font-family: 'Fraunces', serif;
+    color: var(--ink);
+    font-size: 30px;
+    font-weight: 600;
+    letter-spacing: -0.5px;
+  }
+  .modal-header .close {
+    color: var(--ink-dim);
+    background: transparent;
+    border: 1px solid var(--edge);
+    border-radius: 100px;
+    font-size: 12px; letter-spacing: 1px;
+    padding: 8px 14px; cursor: pointer;
+    transition: all 0.15s;
+  }
+  .modal-header .close:hover { color: var(--accent); border-color: var(--accent); }
+  .modal .badge {
+    font-family: 'Caveat', cursive;
+    color: var(--accent); font-size: 22px;
+    margin-bottom: 18px; display: block;
+  }
+  .modal .desc {
+    font-family: 'Fraunces', serif;
+    color: var(--ink); font-size: 16px;
+    margin-bottom: 24px; line-height: 1.7;
+  }
+  .modal .subsection { margin-bottom: 24px; }
+  .modal .subsection-label {
+    font-family: 'Caveat', cursive;
+    color: var(--accent); font-size: 20px;
+    margin-bottom: 10px;
+  }
+  .modal .stack { display: flex; flex-wrap: wrap; gap: 8px; }
+  .modal .chip {
+    font-size: 12px; color: var(--accent);
+    background: var(--paper-warm);
+    border: 1px solid var(--edge);
+    border-radius: 100px;
+    padding: 6px 14px;
+    font-weight: 500;
+  }
+  .modal .learn {
+    font-family: 'Fraunces', serif;
+    color: var(--ink); font-size: 14px;
+    line-height: 1.7;
+    background: var(--paper-warm); padding: 18px 22px;
+    border-left: 3px solid var(--accent);
+    border-radius: 0 12px 12px 0;
+  }
+  .modal .learn b { color: var(--accent); font-weight: 600; }
+  .modal .repo-link {
+    display: inline-block; margin-top: 20px;
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 13px; letter-spacing: 1px;
+    font-weight: 500;
+    border: 1.5px solid var(--accent);
+    border-radius: 100px;
+    padding: 10px 20px;
+    transition: all 0.15s;
+  }
+  .modal .repo-link:hover { background: var(--accent); color: var(--paper); }
+
+  footer {
+    max-width: 900px; margin: 0 auto;
+    padding: 40px 32px 60px;
+    border-top: 1px solid var(--edge);
+  }
+  footer .contact-links {
+    display: flex; flex-direction: column; gap: 12px;
+    margin-bottom: 24px;
+    font-family: 'Fraunces', serif;
+    font-size: 15px;
+  }
+  footer .contact-links a { color: var(--accent); text-decoration: none; }
+  footer .contact-links a:hover { text-decoration: underline; }
+  footer .contact-links .label {
+    font-family: 'Caveat', cursive;
+    color: var(--ink-dim);
+    margin-right: 8px; font-size: 18px;
+  }
+  footer .disc {
+    font-family: 'Fraunces', serif;
+    font-size: 13px;
+    color: var(--ink-dim);
+    font-style: italic;
+    max-width: 620px;
+    line-height: 1.6;
+  }
+
+  @media (max-width: 640px) {
+    .hero { padding: 60px 24px 80px; }
+    .hero h1 { font-size: 64px; }
+    .hero .subtitle { font-size: 18px; }
+    .wrap { padding: 60px 24px 80px; }
+    .section-label { font-size: 24px; }
+    nav { padding: 12px 20px; }
+    nav .links a { margin-left: 16px; font-size: 11px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="brand">jay zhang</div>
+  <div class="links">
+    <a href="#projects">projects</a>
+    <a href="#skills">skills</a>
+    <a href="#writing">writing</a>
+    <a href="#contact">contact</a>
   </div>
-  <section>
-    <h2>about</h2>
-    <p class="intro">17-year-old self-taught developer from the Houston area, focused on quantitative finance and algorithmic trading.</p>
-    <p class="intro dim">I build trading systems and the research tooling around them — backtesting engines, data pipelines, risk models — and I care more about not fooling myself than about pretty results. Most of what I know I learned by building things, breaking them, and figuring out why they broke.</p>
-  </section>
-  <section>
-    <h2>projects</h2>
-    <div class="proj">
-      <h3>FuturesBotSuite <span class="badge">futures · research framework</span></h3>
-      <p>A paper-trading bot for MES (Micro S&P 500) futures running an Opening Range Breakout strategy under real prop-firm risk rules, plus a full research framework I built around it: an automated data recorder, a backtesting engine with honest fills and cost modeling, a research logger, and a market-regime dashboard.</p>
-      <div class="stack"><span class="chip">Python</span><span class="chip">pandas</span><span class="chip">yfinance</span><span class="chip">SQLite</span><span class="chip">backtesting</span><span class="chip">risk modeling</span></div>
-      <div class="learn"><b>What I learned:</b> my first backtest looked great — then I found it was filling entries at prices I couldn't actually get and ignoring costs. I rebuilt the engine to fill honestly and model commission + slippage. The numbers got worse, and far more trustworthy. Also learned that 28 trades tells you nothing — sample size is everything.</div>
+</nav>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hello">hey there,</div>
+    <h1>Jay Zhang</h1>
+    <div class="subtitle">
+      I build <span class="accent">quantitative trading systems</span> — and the research infrastructure around them.
     </div>
-    <div class="proj a">
-      <h3>MemeBotFinal <span class="badge">solana · live trading</span></h3>
-      <p>A Solana memecoin trading bot with automated rug-pull detection, position sizing, trailing stops, a backtester, and a GUI — built to operate in fast-moving on-chain markets while managing the constant risk of getting rugged.</p>
-      <div class="stack"><span class="chip">Python</span><span class="chip">Solana</span><span class="chip">on-chain data</span><span class="chip">GUI</span><span class="chip">risk management</span></div>
-      <div class="learn"><b>What I learned:</b> real markets punish sloppy assumptions. Backtests that look profitable can hide overfitting and subtle data leakage — separating "this has edge" from "this got lucky" is the whole game, and it's harder than writing the strategy.</div>
+    <div class="meta">
+      17 · Houston, TX <span class="dot">·</span> self-taught <span class="dot">·</span> systems &amp; markets
     </div>
-    <div class="proj c">
-      <h3>Helius Wallet Tracker <span class="badge">solana · data intelligence</span></h3>
-      <p>A Solana wallet-intelligence tool built on the Helius API that tracks and analyzes on-chain wallet activity, with credit-optimized request batching to pull data efficiently at scale without blowing through API limits.</p>
-      <div class="stack"><span class="chip">Python</span><span class="chip">Helius API</span><span class="chip">Solana</span><span class="chip">data pipelines</span></div>
-      <div class="learn"><b>What I learned:</b> working within real API constraints — rate limits, credit costs, batching — is its own engineering problem, separate from the analysis itself.</div>
-    </div>
-  </section>
+  </div>
+</div>
+
+<div class="wrap">
+
   <section>
-    <h2>currently exploring</h2>
-    <div class="next"><b>Prediction markets.</b> Researching calibration and trading strategies for Polymarket / Kalshi — building toward a system that scores probability estimates and eventually trades on them. Prediction markets are one of the cleanest sandboxes for quantitative thinking, and I'm learning the math (probability, Kelly sizing, calibration) alongside the code.</div>
+    <div class="section-label">about</div>
+    <p>Self-taught developer from the Houston area focused on quantitative finance and algorithmic trading.</p>
+    <p class="dim">I build trading systems and the research tooling around them, and I care more about not fooling myself than about pretty results. Most of what I know I learned by building things, breaking them, and figuring out why they broke.</p>
   </section>
-  <footer>
-    <div class="line"><span class="prompt">jay@dev</span><span class="out">:</span><span class="path">~</span><span class="out">$ </span>contact</div>
-    <div style="margin-top:10px">GitHub &nbsp;→&nbsp; <a href="https://github.com/JayZhangDev">github.com/JayZhangDev</a></div>
-    <div class="disc">All projects shown here are personal, educational builds — not trading advice, not investment products, and not proven profitable. Built to learn and to demonstrate engineering, not to manage money.</div>
-  </footer>
-</div></body></html>
+
+  <section id="projects">
+    <div class="section-label">projects</div>
+    <div class="proj-list">
+      <a class="proj-row" href="strategysifter.html" style="text-decoration:none;color:inherit;">
+        <div class="info">
+          <h3>StrategySifter</h3>
+          <div class="tag">quant · research pipeline</div>
+        </div>
+        <div class="action">→ view case study</div>
+      </a>
+      <div class="proj-row" onclick="openModal('futuresbotsuite')">
+        <div class="info">
+          <h3>FuturesBotSuite</h3>
+          <div class="tag">futures · research framework</div>
+        </div>
+        <div class="action">→ view</div>
+      </div>
+      <div class="proj-row" onclick="openModal('memebot')">
+        <div class="info">
+          <h3>MemeBotFinal</h3>
+          <div class="tag">solana · live trading</div>
+        </div>
+        <div class="action">→ view</div>
+      </div>
+      <div class="proj-row" onclick="openModal('helius')">
+        <div class="info">
+          <h3>Helius Wallet Tracker</h3>
+          <div class="tag">solana · data intelligence</div>
+        </div>
+        <div class="action">→ view</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="section-label">skills</div>
+    <div class="skills-grid">
+      <div class="skill-col">
+        <div class="label">languages</div>
+        <div class="items">Python<br>SQL<br>JavaScript<br>Bash</div>
+      </div>
+      <div class="skill-col">
+        <div class="label">quant</div>
+        <div class="items">Backtesting<br>Walk-forward<br>Monte Carlo<br>Risk modeling<br>Factor analysis</div>
+      </div>
+      <div class="skill-col">
+        <div class="label">data / infra</div>
+        <div class="items">pandas / numpy<br>SQLite / DuckDB<br>Streamlit<br>launchd / cron<br>Git</div>
+      </div>
+      <div class="skill-col">
+        <div class="label">domain</div>
+        <div class="items">Futures (MES)<br>Equities / ETFs<br>Solana / on-chain<br>Prediction markets<br>Options basics</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="writing">
+    <div class="section-label">writing</div>
+    <div class="callout">
+      <span class="kicker">coming soon</span>
+      <p>A writeup on the StrategySifter meta-finding — of 12 recent posts from top-tier practitioner quant blogs, zero contained backtestable strategy specifications. What that says about public quant content, and why it's the expected result.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-label">currently exploring</div>
+    <div class="callout">
+      <span class="kicker">prediction markets</span>
+      <p>Researching calibration and trading strategies for Polymarket / Kalshi, building toward a system that scores probability estimates and eventually trades on them.</p>
+    </div>
+  </section>
+
+</div>
+
+<footer id="contact">
+  <div class="contact-links">
+    <div><span class="label">github →</span><a href="https://github.com/JayZhangDev">github.com/JayZhangDev</a></div>
+    <div><span class="label">discord →</span><span style="color:var(--accent)">vezible</span></div>
+  </div>
+  <div class="disc">
+    All projects shown here are personal, educational builds — not trading advice, not investment products, and not proven profitable. Built to learn and to demonstrate engineering, not to manage money.
+  </div>
+</footer>
+
+<div class="modal-backdrop" id="modal-backdrop" onclick="handleBackdrop(event)">
+  <div class="modal" id="modal-content" onclick="event.stopPropagation()">
+    <div id="modal-body"></div>
+  </div>
+</div>
+
+<script>
+const PROJECTS = {
+  futuresbotsuite: {
+    title: "FuturesBotSuite",
+    badge: "futures · research framework",
+    desc: "Paper-trading bot for MES (Micro S&P 500) futures running an Opening Range Breakout strategy under real prop-firm risk rules, plus a full research framework: automated data recorder, backtesting engine with honest fills and cost modeling, research logger, and market-regime dashboard.",
+    stack: ["Python", "pandas", "Databento", "SQLite", "backtesting", "risk modeling"],
+    learn: "<b>What I learned:</b> my first backtest looked great — then I found it was filling entries at prices I couldn't actually get and ignoring costs. I rebuilt the engine to fill honestly and model commission + slippage. The numbers got worse, and far more trustworthy. Also learned that 28 trades tells you nothing — sample size is everything.",
+    repo: "https://github.com/JayZhangDev/FuturesBotSuite"
+  },
+  memebot: {
+    title: "MemeBotFinal",
+    badge: "solana · live trading",
+    desc: "Solana memecoin trading bot with automated rug-pull detection, position sizing, trailing stops, a backtester, and a GUI — built to operate in fast-moving on-chain markets while managing the constant risk of getting rugged.",
+    stack: ["Python", "Solana", "on-chain data", "GUI", "risk management"],
+    learn: "<b>What I learned:</b> real markets punish sloppy assumptions. Backtests that look profitable can hide overfitting and subtle data leakage — separating 'this has edge' from 'this got lucky' is the whole game, and it's harder than writing the strategy.",
+    repo: null
+  },
+  helius: {
+    title: "Helius Wallet Tracker",
+    badge: "solana · data intelligence",
+    desc: "A Solana wallet-intelligence tool built on the Helius API that tracks and analyzes on-chain wallet activity, with credit-optimized request batching to pull data efficiently at scale without blowing through API limits.",
+    stack: ["Python", "Helius API", "Solana", "data pipelines"],
+    learn: "<b>What I learned:</b> working within real API constraints — rate limits, credit costs, batching — is its own engineering problem, separate from the analysis itself.",
+    repo: null
+  }
+};
+
+function openModal(id) {
+  const p = PROJECTS[id];
+  if (!p) return;
+  const chips = p.stack.map(s => `<span class="chip">${s}</span>`).join("");
+  const repoLink = p.repo
+    ? `<a class="repo-link" href="${p.repo}" target="_blank" rel="noopener">→ view repo</a>`
+    : "";
+  document.getElementById("modal-body").innerHTML = `
+    <div class="modal-header">
+      <h2>${p.title}</h2>
+      <button class="close" onclick="closeModal()">esc ✕</button>
+    </div>
+    <div class="badge">${p.badge}</div>
+    <div class="desc">${p.desc}</div>
+    <div class="subsection">
+      <div class="subsection-label">stack</div>
+      <div class="stack">${chips}</div>
+    </div>
+    <div class="subsection">
+      <div class="subsection-label">notes</div>
+      <div class="learn">${p.learn}</div>
+    </div>
+    ${repoLink}
+  `;
+  document.getElementById("modal-backdrop").classList.add("open");
+  document.body.style.overflow = "hidden";
+}
+
+function closeModal() {
+  document.getElementById("modal-backdrop").classList.remove("open");
+  document.body.style.overflow = "";
+}
+
+function handleBackdrop(e) {
+  if (e.target.id === "modal-backdrop") closeModal();
+}
+
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") closeModal();
+});
+</script>
+
+</body>
+</html>
