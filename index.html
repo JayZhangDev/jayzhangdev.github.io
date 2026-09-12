@@ -379,6 +379,13 @@
         </div>
         <div class="action">→ case study</div>
       </a>
+      <div class="proj-row" onclick="openModal('polybot')">
+        <div class="info">
+          <h3>POLYBOT</h3>
+          <div class="tag">prediction markets · autonomous paper-trader</div>
+        </div>
+        <div class="action">→ view</div>
+      </div>
       <div class="proj-row" onclick="openModal('futuresbotsuite')">
         <div class="info">
           <h3>FUTURESBOTSUITE</h3>
@@ -436,8 +443,8 @@
   <section>
     <div class="section-label">currently exploring</div>
     <div class="callout">
-      <span class="kicker">prediction markets</span>
-      <p>Researching calibration and trading strategies for Polymarket / Kalshi, building toward a system that scores probability estimates and eventually trades on them.</p>
+      <span class="kicker">market microstructure</span>
+      <p>Reading López de Prado, Ernie Chan, and prediction-market research. Interested in cross-market calibration (how well do Polymarket odds actually predict outcomes?), and in what edge looks like across asset classes with different levels of institutional participation.</p>
     </div>
   </section>
 </main>
@@ -637,6 +644,14 @@
 })();
 
 const PROJECTS = {
+  polybot: {
+    title: "POLYBOT",
+    badge: "prediction markets · autonomous paper-trader",
+    desc: "Autonomous paper-trading system for Polymarket. Pulls live market data hourly, applies three signal families (longshot favorite bias, 24h momentum, multi-outcome odds mismatch), and paper-trades against them with position sizing, concentration limits, and P&L tracking. Streamlit dashboard for browsing positions and equity curve. Runs unattended via launchd.",
+    stack: ["Python", "Streamlit", "Polymarket API", "SQLite", "plotly", "launchd"],
+    learn: "<b>What I'm learning:</b> prediction markets are less crowded than equities but not obviously more profitable — the same edge-vs-luck problem applies. Building this to run for 8 months, measure calibration, and eventually transition to real USDC trading at 18.",
+    repo: "https://github.com/JayZhangDev/PolyBot"
+  },
   futuresbotsuite: {
     title: "FUTURESBOTSUITE",
     badge: "futures · research framework",
