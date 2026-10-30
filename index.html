@@ -422,15 +422,15 @@
         </a>
         <div class="body">
           <h3>POLYBOT</h3>
-          <div class="tag">prediction markets · paper-trading pipeline</div>
-          <p>Automated paper-trading pipeline on Polymarket. Pulls live market data hourly, tracks calibration, opens and closes paper positions, and publishes the results to a live dashboard.</p>
+          <div class="tag">prediction markets · autonomous agent v2 · paper trading</div>
+          <p>Autonomous prediction market agent with proprietary probability estimation, Kelly sizing, and 6% risk cap. Scans Polymarket every 10 minutes, logs every decision, and learns from resolved markets. Evolved from the original hourly paper-trading and calibration pipeline. Paper trading only.</p>
           <div class="stats">
-            <div class="stat"><b>500+</b><span>markets tracked</span></div>
+            <div class="stat"><b>1,300+</b><span>markets scanned</span></div>
             <div class="stat"><b>24/7</b><span>scheduled runs</span></div>
-            <div class="stat"><b>1h</b><span>data cadence</span></div>
+            <div class="stat"><b>10m</b><span>agent cadence</span></div>
           </div>
           <div class="chips">
-            <span class="chip">Python</span><span class="chip">SQLite</span><span class="chip">Polymarket API</span><span class="chip">GitHub Pages</span>
+            <span class="chip">Python</span><span class="chip">SQLite</span><span class="chip">Polymarket API</span><span class="chip">Kelly sizing</span><span class="chip">GitHub Pages</span>
           </div>
           <div class="links">
             <a class="primary" href="https://jayzhangdev.github.io/PolyBot/" target="_blank" rel="noopener">→ live dashboard</a>
@@ -745,10 +745,10 @@
 const PROJECTS = {
   polybot: {
     title: "POLYBOT",
-    badge: "prediction markets · autonomous paper-trader",
-    desc: "Autonomous paper-trading system for Polymarket. Pulls live market data hourly, applies three signal families (longshot favorite bias, 24h momentum, multi-outcome odds mismatch), and paper-trades against them with position sizing, concentration limits, and P&L tracking. Streamlit dashboard for browsing positions and equity curve. Runs unattended via launchd.",
-    stack: ["Python", "Streamlit", "Polymarket API", "SQLite", "plotly", "launchd"],
-    learn: "<b>What I'm learning:</b> prediction markets are less crowded than equities but not obviously more profitable — the same edge-vs-luck problem applies. Building this to run for 8 months, measure calibration, and eventually transition to real USDC trading at 18.",
+    badge: "prediction markets · autonomous agent v2",
+    desc: "Autonomous prediction market agent with proprietary probability estimation, Kelly sizing, and 6% risk cap. Every 10 minutes it scans Polymarket, estimates each market's probability (category-calibrated base rate plus a recency signal, weighted by per-category accuracy), keeps only edges above 8%, sizes with half-Kelly under a 6% per-market cap and 10 open positions, and logs every decision for audit. A learning loop updates priors as markets resolve. It grew out of the original hourly pipeline (snapshots, calibration tracker, rule-based paper trader), which still runs alongside it. Paper trading only, no real money.",
+    stack: ["Python", "SQLite", "Polymarket API", "Kelly criterion", "WSL + Task Scheduler", "GitHub Pages"],
+    learn: "<b>What I'm learning:</b> prediction markets are less crowded than equities but not obviously more profitable — the same edge-vs-luck problem applies. In its first scans of ~1,300 markets the agent found no edge above 8% (the largest was under 1%), which is what an efficient market looks like. Building this to run for 8 months, measure calibration, and eventually transition to real USDC trading at 18.",
     repo: "https://github.com/JayZhangDev/PolyBot"
   },
   futuresbotsuite: {
